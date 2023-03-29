@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Installs, configures, and starts the server
+
+apt-get update
+apt-get install -y nginx
+
+mkdir /var/www/html
+touch /var/www/html/index.html
+echo "Hello Word!" > /var/www/html/index.html
+SERVER_CONFIG=\
+"server {
+	listen 80;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+		rewrite ^ https://www.freecodecamp.org permanent;
+	}
+}"
+
+bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
+
+service nginx restart
