@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Python script that, using this REST API, 
+Python script that, using this REST API,
 for a given employee ID,
 returns information about his/her TODO list progress.
 """
@@ -25,7 +25,12 @@ if __name__ == '__main__':
             doneTask.append(task)
             done += 1
 
-    print("Employee {} is done with tasks({}/{}):".format(employeeName, done, len(tasks)))
+    print("Employee {} is done with tasks({}/{}):".format(
+        employeeName,
+        done,
+        len(tasks)
+        )
+    )
 
     for task in doneTask:
         print("\t {}".format(task.get('title')))

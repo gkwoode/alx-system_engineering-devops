@@ -4,9 +4,9 @@ Using what you did in the task #0, extend your
     - Python script to export data in the JSON format
 """
 
+import json
 import requests
 import sys
-import json
 
 if __name__ == '__main__':
     url = "https://jsonplaceholder.typicode.com/users"
@@ -28,5 +28,6 @@ if __name__ == '__main__':
                 "completed": task.get('completed'),
                 "username": username
             })
+
     with open('todo_all_employees.json', 'w') as file:
         json.dump(dictionary, file)

@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Using what you did in the task #0, extend your 
+Using what you did in the task #0, extend your
     - Python script to export data in the CSV format
 """
 
+import csv
 import requests
 import sys
-import csv
 
 if __name__ == '__main__':
     employeeId = sys.argv[1]
@@ -21,8 +21,8 @@ if __name__ == '__main__':
     with open('{}.csv'.format(employeeId), 'w') as file:
         for task in tasks:
             file.write('"{}","{}","{}","{}"\n'.format(
-                employeeId, 
-                username, 
+                employeeId,
+                username,
                 task.get('completed'),
                 task.get('title')
                 )
